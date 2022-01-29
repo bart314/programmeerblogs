@@ -59,4 +59,6 @@ plugins:
   - search
   - mknotebooks:
       execute: false
-  - git-committers
+  - git-committers:
+      repository: bart314/programmeerblogs
+      branch: master
