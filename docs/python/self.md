@@ -1,4 +1,6 @@
-contributors: byrnereese,grokify
+---
+date: 27 januari 2022
+---
 
 # Python `self`
 

@@ -1,3 +1,7 @@
+---
+date: 27 januari 2022
+---
+
 # Python string-representaties
 
 ## Inleiding

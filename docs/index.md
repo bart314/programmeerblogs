@@ -1,3 +1,7 @@
+---
+date: 29 januari 2022
+---
+
 # Programmeerblogs
 
 Op deze pagina's schrijf ik over verschillende dingen die ik heb uitgezocht, details over programmeertalen of rare dingen die ik ben tegengekomen tijdens mijn dagelijkse werk. Vooral ik het kader van 'niet mailen maar bloggen' probeer ik hier algemene en uitgebreide antwoorden te geven op vragen die dikwijls tijdens de lessen voorkomen.
