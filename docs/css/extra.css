@@ -21,6 +21,7 @@ h3 { font-size:1.2rem; font-weight:700; }
 
 @keyframes zoom{from{transform:scale(0)}to{transform:scale(1)}}.close{position:absolute;top:15px;right:35px;color:#f1f1f1;font-size:40px;font-weight:bold;transition:0.3s}.close:focus,.close:hover{color:#bbb;text-decoration:none;cursor:pointer}@media only screen and (max-width: 700px){.modal-content{width:100%}}
 
+span.hll{ background-color:#cc0; display:block; }
 
 @media (prefers-color-scheme:dark) {
   /*  @import werkt niet na media-queries
@@ -34,4 +35,6 @@ h3 { font-size:1.2rem; font-weight:700; }
     .bs-sidenav { background-color:#e9ecef;}
 
     .hljs{display:block;overflow-x:auto;padding:0.5em;background:#282a36}.hljs-built_in,.hljs-link,.hljs-section,.hljs-selector-tag{color:#8be9fd}.hljs-keyword{color:#ff79c6}.hljs,.hljs-subst{color:#f8f8f2}.hljs-attr,.hljs-meta-keyword,.hljs-title{font-style:italic;color:#50fa7b}.hljs-addition,.hljs-bullet,.hljs-meta,.hljs-name,.hljs-string,.hljs-symbol,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable{color:#f1fa8c}.hljs-comment,.hljs-deletion,.hljs-quote{color:#6272a4}.hljs-doctag,.hljs-keyword,.hljs-literal,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-strong,.hljs-title,.hljs-type{font-weight:bold}.hljs-literal,.hljs-number{color:#bd93f9}.hljs-emphasis{font-style:italic}
+    span.hll { background-color:darkblue; display:block; }
+    span.hljs-tag { color:gray;}
 }
