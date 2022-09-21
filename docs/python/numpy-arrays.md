@@ -5,7 +5,7 @@ date: 20 september 2022
 
 ## Introductie
 
-Om de *grootte*, de *dimensionaliteit* van een matrix of vector in numpy weer te geven, maken we gebruik van de eigenschap `shape` van deze datatypen. Zo is de `shape` van de matrix $X$ hieronder `(2,3)` en die van de vector $y$ `(2,1)`. 
+Om de *grootte*, de *dimensionaliteit* van een matrix of vector in numpy weer te geven, maken we gebruik van de eigenschap `shape` van deze datatypen. Zo is de `shape` van de matrix $X$ hieronder `(2,4)` en die van de vector $y$ `(2,1)`. 
 
 ![Een matrix en een vector](../imgs/matrix-vector.png)
 
