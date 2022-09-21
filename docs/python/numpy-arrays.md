@@ -1,4 +1,3 @@
-
 ---
 date: 20 september 2022
 ---
@@ -22,7 +21,7 @@ array([1, 2, 3, 4, 5])
 >>> 
 ```
 
-Er kan evenwel een probleem optreden wanneer we vectoren bij elkaar willen optreden, of matrixen met vectoren willen vermenigvuldigen (iets wat we nogal eens willen doen wanneer we bijvoorbeeld games ontwikkelen of met *machine learning* aan de gang gaan). Zoals bekend is het resultaat van de vermenigvuldiging van een $m \cdot n$ matrix met een $n \cdot 1$ vector een $m \cdot 1$ vector. Maar dan moeten die beide `n`-waarden wel met elkaar corresponderen, anders krijgen we onverwachte resultaten:
+Er kan evenwel een probleem optreden wanneer we vectoren bij elkaar willen optreden, of matrixen met vectoren willen vermenigvuldigen (iets wat we nogal eens willen doen wanneer we bijvoorbeeld games ontwikkelen of met *machine learning* aan de gang gaan). Zoals bekend is het resultaat van de vermenigvuldiging van een $m x n$ matrix met een $n x 1$ vector een $m x 1$ vector. Maar dan moeten die beide `n`-waarden wel met elkaar corresponderen, anders krijgen we onverwachte resultaten:
 
 ```python
 >>> m1 = np.array([np.arange(5),np.arange(5)])
@@ -81,7 +80,7 @@ array([[ 0,  1,  2],
 >>> 
 ```
 
-Al deze acties veranderen de oorsponkelijke data niet, maar alleen de representatie ervan. Zelfs wanneer we bij het aanmaken van een matrix een bepaalde vorm meegeven, is de data nog steeds opgeslagen in één *ontiguous memory block*. 
+Al deze acties veranderen de oorsponkelijke data niet, maar alleen de representatie ervan. Zelfs wanneer we bij het aanmaken van een matrix een bepaalde vorm meegeven, is de data nog steeds opgeslagen in één *contiguous memory block*. 
 
 Wanneer we de data op een bepaalde manier representeren, bijvoorbeeld omdat we het als een matrix willen gebruiken, veranderen we eigenlijk alleen maar de *view* op de data buffer. Feitelijk is deze *view* onderdeel van de *metadata* die door numpy wordt bijgehouden en die ook nog andere dingen bevat (zoals de byte-order of het datatype). Met het gebruik van `reshape` geven we numpy informatie over de zogenaamde `stride` van de data: de *grootte van de stappen* waarmee door de data heengelopen moet worden. 
 
@@ -109,14 +108,14 @@ array([[ 0,  1,  2,  3],
 >>> 
 ```
 
-Nu zien we `foo` als een 4 &times; 3 matrix. Als we hier de `stides` van opvragen, krijgen we wel twee waarden: het *eerste* getal in de tupel geeft aan hoeveel bytes de naastgelegen elementen in dezelfde *kolom* van een element verwijderd zijn: om één element omhoog of omlaag te gaan, moeten we de interne pointer als het ware 16 bytes verhogen of verlagen. Om naar het naastliggende element in dezelfde *regel* te gaan, moeten we de interne pointer vier bytes verhogen of verlagen.
+Nu zien we `foo` als een 3 &times; 4 matrix. Als we hier de `stides` van opvragen, krijgen we wel twee waarden: het *eerste* getal in de tupel geeft aan hoeveel bytes de naastgelegen elementen in dezelfde *kolom* van een element verwijderd zijn: om één element omhoog of omlaag te gaan, moeten we de interne pointer als het ware 16 bytes verhogen of verlagen. Om naar het naastliggende element in dezelfde *regel* te gaan, moeten we de interne pointer vier bytes verhogen of verlagen.
 
 ![De data buffer met 32bits integers](../imgs/data-buffer.png)
 
 ![Dezelfde data weergegeven als een matrix](../imgs/matrix-strides.png)
 
 
-Dit verklaart ook waarom we initieel een `strides` hadden van `(4,)`: in de databuffer zelf hebben we geen andere representatie dan een lijst van getallen', dus we kunnen maar één waarde hebben om aan te geven hoe we naar een naastliggend element moeten gaan. Een tweede waarde in dat tupel zou geen betekenis hebben.
+Dit verklaart ook waarom we initieel een `strides` hadden van `(4,)`: in de databuffer zelf hebben we geen andere representatie dan een lijst van getallen, dus we *kunnen* maar één waarde hebben om aan te geven hoe we naar een naastliggend element moeten gaan. Een tweede waarde in dat tupel zou geen betekenis hebben.
 
 
 
@@ -140,7 +139,7 @@ array([[[ 0,  1],
 >>> 
 ```
 
-Wat hier opvalt is dat het aantal elementen in de `strides` aangeeft hoeveel stappen je moet zetten om bij één individueel element uit de data buffer uit te komen. In het geval van de data buffer zelf is één waarde genoeg, in een twee-dimensionale matrix moet je twee waarden opgeven (en de `strides`-tupel heeft ook twee waarden) en in de drie-dimensionale matrix hierboven moet je drie waarden opgeven voordat je bij een individueel getal uitkomt:
+Wat hier opvalt is dat het aantal elementen in de `strides` aangeeft hoeveel stappen je moet zetten om bij één individueel element uit de data buffer uit te komen. In het geval van de data buffer zelf is één waarde genoeg, in een twee-dimensionale matrix moet je twee waarden opgeven (en de `strides`-tupel heeft ook twee waarden) en in de drie-dimensionale matrix hierboven moet je drie waarden opgeven voordat je bij een individueel getal uitkomt (en de `stride`-tupel heeft ook drie waarden):
 
 ```python
 >>> m1.reshape(3,2,2)[1]
@@ -153,7 +152,8 @@ array([[0, 1],
 array([2, 3], dtype=int32)
 >>> m1.reshape(3,2,2)[0][1][0]
 2
->>> >>> m1.reshape(3,2,2)[0,1,0] #<-- let op deze syntax
+>>> #alternatieve syntax
+>>> m1.reshape(3,2,2)[0,1,0] 
 2
 >>> 
 ```
